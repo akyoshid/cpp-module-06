@@ -6,22 +6,29 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:45:50 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/09/04 14:31:18 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:09:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
+#include <iostream>
 #include "Serializer.hpp"
 #include "Data.hpp"
 
 int main() {
     Data d = {"akyoshid", 25};
-    std::cout << "=== Data ===" << std::endl;
-    std::cout << "Data: " << d << std::endl;
-    std::cout << "Address: " << &d << std::endl;
-    uintptr_t raw = Serializer::serialize(&d);
-    std::cout << "=== uintptr_t ===" << std::endl;
-    std::cout << "Data: " << *(Serializer::deserialize(raw)) << std::endl;
-    std::cout << "Address: 0x" << std::hex << raw << std::dec << std::endl;
-    return 0;
+    uintptr_t addr = Serializer::serialize(&d);
+    Data* ptr = Serializer::deserialize(addr);
+    std::cout << "d:\t" << d << std::endl;
+    std::cout << "&d:\t" << &d << std::endl;
+    std::cout << "*ptr:\t" << *ptr << std::endl;
+    std::cout << "addr:\t0x" << std::hex << addr << std::dec << std::endl;
+    if (&d == ptr) {
+        std::cout << "SUCCESS" << std::endl;
+        return 0;
+    }
+    else {
+        std::cerr << "FAILURE" << std::endl;
+        return 1;
+    }
 }
