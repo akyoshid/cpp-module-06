@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:39:12 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/09/04 16:58:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/09/04 18:10:53 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,22 @@ void identify(Base* p) {
 
 void identify(Base& p) {
     try {
-        dynamic_cast<A&>(p);
+        A& a = dynamic_cast<A&>(p);
+        (void)a;
         std::cout << "A" << std::endl;
         return ;
     } catch (std::exception& e) {
     }
     try {
-        dynamic_cast<B&>(p);
+        B& b = dynamic_cast<B&>(p);
+        (void)b;
         std::cout << "B" << std::endl;
         return ;
     } catch (std::exception& e) {
     }
     try {
-        dynamic_cast<C&>(p);
+        C& c = dynamic_cast<C&>(p);
+        (void)c;
         std::cout << "C" << std::endl;
         return ;
     } catch (std::exception& e) {
