@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:38:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/09/04 16:44:00 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:56:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main() {
         Base* p = generate();
         identify(p);
         identify(*p);
+        delete p;
         Base b;
         identify(&b);
         identify(b);
