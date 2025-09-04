@@ -6,15 +6,29 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:38:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/09/04 14:42:37 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:44:00 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <exception>
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
 
 int main() {
-    return 1;
+    try {
+        Base* p = generate();
+        identify(p);
+        identify(*p);
+        Base b;
+        identify(&b);
+        identify(b);
+        identify(NULL);
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+    return 0;
 }
